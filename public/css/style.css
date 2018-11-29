@@ -70,11 +70,6 @@ body,html{
   font-size: 14px;
   outline: none;
 }
-.main-right .table tbody tr 
-.tdlist{
-  display: flex;
-  justify-content: space-around;
-}
 .foot{
   height: 50px;
   align-items: center;

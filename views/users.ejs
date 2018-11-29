@@ -3,13 +3,12 @@
 
 <head>
   <title>用户管理</title>
-  <link rel='stylesheet' href='/css/style.css' />
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="css/reset.css">
 </head>
 
 <body>
-
   <div class="continer">
     <%- include('./common/head.ejs') %>
     <div class="main">
@@ -53,9 +52,10 @@
               <td>
                 <%= data[i].isAdmin %>
               </td>
-              <td class="tdlist">
-                <button class="btn">修改</button>
-                <button class="bbn btn-default">删除</button>
+              <td>
+                <% if(!data[i].isAdmin){ %>
+                <a class="bbn btn-default" href="/users/delete?id=<%= data[i]._id %>">删除</a>
+                <% } %>
               </td>
             </tr>
             <%} %>
@@ -63,16 +63,25 @@
         </table>
         <div class="nav">
           <ul class="pagination">
-            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            <li class="disabled">
+              <a href="users?page=<%= page-1<1? 1:page-1 %>&pageSize=<%= pageSize%>" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <% for(var i =0; i < totapage; i++){ %>
+            <li class="<%= page===(i+1)? 'active':'' %>">
+              <a href="users?page=<%= i+1%>&pageSize=<%= pageSize%>">
+                <%= i+1 %><span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <% } %>
+            <li>
+              <a href="users?page=<%= page+1>totapage? totapage:page+1 %>&pageSize=<%= pageSize%>" aria-label="Next">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
           </ul>
         </div>
-
       </div>
     </div>
     <%- include('./common/foot.ejs') %>
