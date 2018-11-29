@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>品牌管理</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/css/style.css' />
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    td{
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="continer">
+    <%- include('./common/head.ejs') %>
+    <div class="main">
+      <%- include('./common/maue.ejs')%>
+      <div class="main-right">
+            <h1>品牌管理</h1>
+        <form class="right-f">
+          <input type="text" />
+          <button class="btn btn-primary">搜索</button>
+        </form>
+        <table class="table table-bordered tablist">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <td>品牌logo</td>
+              <td>品牌名称</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>zhangsanfeng</td>
+              <td>张三丰</td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>heben</td>
+              <td>赫本</td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>huyidao</td>
+              <td>胡一刀</td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="nav">
+          <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%- include('./common/foot.ejs') %>
+  </div>
+</body>
+</html>

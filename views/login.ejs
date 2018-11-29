@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>手机管理</title>
+  <link rel='stylesheet' href='/css/style.css' />
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+      body{
+          background: palegoldenrod;
+      }
+      .main-right h1{
+          margin: 150px auto 10px;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .main-right h4{
+          margin:10px auto;
+          font-size: 24px;
+          font-weight: bold;
+      }
+      .box{
+          width: 340px;
+          margin: 0 auto;
+      }
+      .box label{
+        float: right;
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .box .btn{
+          width: 100px;
+          float: right;
+      }
+      .boxa{
+          font-size: 14px;
+          text-decoration: none;
+          float: right;
+          color: palevioletred;
+          display:inline-block;
+          padding: 18px 0 0 5px;
+      }
+      .boxa:hover{
+          text-decoration: none;
+      }
+      .sbt{
+          margin-left: 178px;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="continer">
+    <div class="main">
+      <div class="main-right">
+            <h1>xx后台管理系统</h1>
+            <h4>欢迎登录</h4>
+            <form action="/users/login" method="POST" class="box">
+                <label>用户名: <input type="text" name="name" class="inp"></label><br/>
+                <label>密码: <input type="password" name="pwd" class="psd"></label>
+                <input type="submit" value="登录" class="sbt">
+                 <a class="boxa" href="/register">没有账号？</a>
+                <!--<a class="btn btn-primary" href="#">登录</a> -->
+            </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

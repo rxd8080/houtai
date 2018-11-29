@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>手机管理</title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body{
+          background: papayawhip;
+      }
+      .main-right h1{
+          margin:150px auto 0;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .main-right h4{
+          margin:10px auto;
+          font-size: 24px;
+          font-weight: bold;
+      }
+      .box{
+          width: 360px;
+          margin: 0 auto;
+      }
+      .box label{
+        float: right;
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .box .btn{
+          width: 100px;
+          float: right;
+      }
+      .boxa{
+          font-size: 14px;
+          text-decoration: none;
+          float: right;
+          color: palevioletred;
+          display:inline-block;
+          padding: 18px 0 0 5px;
+      }
+      .boxa:hover{
+          text-decoration: none;
+      }
+      .box .inp-man{
+          float: none;
+          margin-left:78px;
+      }
+      .box .inp-m{
+          float: none;
+          margin-left:58px;
+      }
+      .box .inp-women{
+          float: none;
+      }
+      .sbt{
+          margin-left: 200px;
+      }
+  </style>
+</head>
+<body>
+    <div class="continer">
+        <div class="main">
+            <%- include('./common/maue.ejs')%>
+            <div class="main-right">
+                <h1>xx后台管理系统</h1>
+                <h4>欢迎注册</h4>
+                <form action="/users/register" method="POST" class="box">
+                    <label>用户名: <input type="text" name="name"></label><br />
+                    <label>密码: <input type="password" name="pwd"></label>
+                    <label>昵称: <input type="text" name="nickname"></label>
+                    <label>年龄: <input type="text" name="age"></label>
+                    <label class="inp-man">
+                        性别: <input type="radio" name="sex" value="男" checked>男
+                    </label>
+                    <label class="inp-women">
+                        <input type="radio" name="sex" value="女">女
+                    </label><br />
+                    <label class="inp-m">
+                        管理员：<input type="radio" name="isAdmin" value="是" >是
+                    </label>
+                    <label class="inp-women">
+                        <input type="radio" name="isAdmin" value="否" checked>否
+                    </label><br />
+                    <a class="boxa" href="/login">已有账号？</a>
+                    <input type="submit" value="注册" class="sbt">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

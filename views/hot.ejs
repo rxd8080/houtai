@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>手机管理</title>
+  <link rel='stylesheet' href='/css/style.css' />
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    img{
+      width: 60px;
+      height: 80px;
+      margin:10px 0;
+    }
+    td{
+      text-align: center;
+    }
+    .table tr td span{
+      display: block;
+      margin-top:40px;
+    }
+    .main-right{
+      position: relative;
+    }
+    .main-right .table tbody tr .tdlist{
+      padding:45px 0;
+    }
+    .tab{
+      display: none;
+      width: 260px;
+      height: 340px;
+      background: palegoldenrod;
+      position: absolute;
+      top:50%;
+      left:50%;
+      padding: 10px;
+      margin:-170px 0 0 -130px;
+    }
+    .tab-f label{
+      float:right;
+      color:rebeccapurple;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+    .tab-h{
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="continer">
+    <%- include('./common/head.ejs') %>
+    <div class="main">
+      <%- include('./common/maue.ejs')%>
+      <div class="main-right">
+        <h1>手机管理</h1>
+        <form class="right-f">
+          <input type="text" />
+          <button class="btn btn-primary">搜索</button>
+        </form>
+        <table class="table table-bordered tablist">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <td>图片</td>
+              <td>手机名称</td>
+              <td>所属品牌</td>
+              <td>官方指导价</td>
+              <td>二手回收价</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td><img src="/images/12_03.jpg"></td>
+              <td><span>OPPO R17 pro</span></td>
+              <td><span>oppo</span></td>
+              <td><span>￥3200</span></td>
+              <td><span>￥1000</span></td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td><img src="/images/img_03.jpg" style="width:45px"></td>
+              <td><span>华为畅享 MAX</span></td>
+              <td><span>华为</span></td>
+              <td><span>￥1900</span></td>
+              <td><span>￥500</span></td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td><img src="/images/timg_03.jpg" style="width:45px"></td>
+              <td><span>苹果 xs</span></td>
+              <td><span>iphone</span></td>
+              <td><span>￥6900</span></td>
+              <td><span>￥2000</span></td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="tab">
+          <form action="" class="tab-f">
+            <h2 class="tab-h">添加修改</h2>
+            <label>图片：<input type="text"></label>
+            <label>手机名称：<input type="text"></label>
+            <label>所属品牌：<input type="text"></label>
+            <label>官方指导价：<input type="text"></label>
+            <label>二手回收价：<input type="text"></label>
+          </form>
+          <button class="bnn">确定</button>
+          <button class="bbb">取消</button>
+        </div>
+        <div class="nav">
+          <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%- include('./common/foot.ejs') %>
+  </div>
+</body>
+
+</html>
+<script src="js/jquery.js"></script>
+<script>
+  $('.btn').click(function(){
+    $('.tab').css("display","block");
+  })
+  $('.bnn').click(function(){
+    $('.tab').css("display","none");
+  })
+  $('.bbb').click(function(){
+    $('.tab').css("display","none");
+  })
+</script>

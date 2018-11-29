@@ -1,0 +1,96 @@
+body,html{
+  width: 100%;
+  height: 100%;
+}
+.header{
+  height: 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left a{
+  text-decoration: none;
+  font-size: 26px;
+  color: #000;
+}
+.header .header-right .btn-lg{
+  padding: 6px 18px;
+  font-size: 14px;
+}
+.header-left a:hover{
+  text-decoration: none;
+  font-size: 26px;
+  color: #000;
+}
+.header-right{
+  display: flex;
+  align-items: center;
+}
+.header-right p{
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 30px;
+}
+.continer{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main{
+  flex: 1;
+  display: flex;
+}
+.main-left{
+  width: 240px;
+  border-right:2px solid palevioletred;
+}
+.main-left ul{
+  margin-top:100px;
+  margin-left: 50px;
+}
+.main-left ul li{
+  margin-top:20px;
+}
+.main-right{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+.main .main-right .nav ul{
+  float:right;
+  margin-right: 20px;
+}
+.main-right .tablist{
+  box-sizing: border-box;
+}
+.main-right .tablist .btn,.main-right .tablist .bbn{
+  padding: 4px 6px;
+  font-size: 14px;
+  outline: none;
+}
+.main-right .table tbody tr 
+.tdlist{
+  display: flex;
+  justify-content: space-around;
+}
+.foot{
+  height: 50px;
+  align-items: center;
+  border-top:1px solid #ccc;
+}
+.active{
+  color:red;
+}
+.right-f {
+  height: 50px;
+  margin: 20px 150px;
+}
+.right-f input{
+  width: 140px;
+  outline: none;
+}
+.right-f button{
+  outline: none;
+}

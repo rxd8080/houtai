@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>用户管理</title>
+  <link rel='stylesheet' href='/css/style.css' />
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+</head>
+
+<body>
+
+  <div class="continer">
+    <%- include('./common/head.ejs') %>
+    <div class="main">
+      <%- include('./common/maue.ejs')%>
+      <div class="main-right">
+        <h1>用户管理</h1>
+        <form class="right-f">
+          <input type="text" />
+          <button class="btn btn-primary">搜索</button>
+        </form>
+        <table class="table table-bordered tablist">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <td>用户名</td>
+              <td>用户昵称</td>
+              <td>性别</td>
+              <td>年龄</td>
+              <td>是否管理员</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i = 0; i< data.length; i++){%>
+            <tr>
+              <th scope="row">
+                <%= i+1 %>
+              </th>
+              <td>
+                <%= data[i].username %>
+              </td>
+              <td>
+                <%= data[i].nickname %>
+              </td>
+              <td>
+                <%= data[i].age %>
+              </td>
+              <td>
+                <%= data[i].sex %>
+              </td>
+              <td>
+                <%= data[i].isAdmin %>
+              </td>
+              <td class="tdlist">
+                <button class="btn">修改</button>
+                <button class="bbn btn-default">删除</button>
+              </td>
+            </tr>
+            <%} %>
+          </tbody>
+        </table>
+        <div class="nav">
+          <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <%- include('./common/foot.ejs') %>
+  </div>
+</body>
+
+</html>
