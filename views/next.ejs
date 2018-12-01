@@ -7,10 +7,46 @@
   <link rel='stylesheet' href='/css/style.css' />
   <link rel="stylesheet" href="css/reset.css">
   <style>
-    td{
-      text-align: center;
-    }
-  </style>
+      img{
+        width: 60px;
+        height: 80px;
+        margin:10px 0;
+      }
+      td{
+        text-align: center;
+      }
+      .table tr td span{
+        display: block;
+        margin-top:40px;
+      }
+      .main-right{
+        position: relative;
+      }
+      .main-right .table tbody tr .tdlist{
+        padding:45px 0;
+      }
+      .tab{
+        display: none;
+        width: 260px;
+        height: 340px;
+        background: palegoldenrod;
+        position: absolute;
+        top:50%;
+        left:50%;
+        padding: 10px;
+        margin:-170px 0 0 -130px;
+      }
+      .tab-f label{
+        float:right;
+        color:rebeccapurple;
+        margin-bottom: 25px;
+        font-size: 14px;
+      }
+      .tab-h{
+        text-align: center;
+        padding: 20px 0;
+      }
+    </style>
 </head>
 
 <body>
@@ -21,8 +57,7 @@
       <div class="main-right">
             <h1>品牌管理</h1>
         <form class="right-f">
-          <input type="text" />
-          <button class="btn btn-primary">搜索</button>
+          <p class="btn but btn-primary">新增</p>
         </form>
         <table class="table table-bordered tablist">
           <thead>
@@ -34,44 +69,47 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>zhangsanfeng</td>
-              <td>张三丰</td>
-              <td class="tdlist">
-                <button class="btn">修改</button>
-                <button class="bbn btn-default">删除</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>heben</td>
-              <td>赫本</td>
-              <td class="tdlist">
-                <button class="btn">修改</button>
-                <button class="bbn btn-default">删除</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>huyidao</td>
-              <td>胡一刀</td>
-              <td class="tdlist">
-                <button class="btn">修改</button>
-                <button class="bbn btn-default">删除</button>
-              </td>
-            </tr>
+            <% for(var i =0; i< data.length;i++){%>
+              <tr>
+                  <th scope="row"><%= i+1%></th>
+                  <td><%= data[i].logo%></td>
+                  <td><%= data[i].name%></td>
+                  <td class="tdlist">
+                    <button class="btn">修改</button>
+                    <button class="bbn btn-default">删除</button>
+                  </td>
+                </tr>
+            <%}%>
           </tbody>
         </table>
+        <div class="tab">
+            <form action="/brands/news" class="tab-f" method="POST">
+              <h2 class="tab-h">添加修改</h2>
+              <label>品牌logo:<input type="text" name="logo"></label>
+              <label>品牌名称:<input type="text" name="name"></label>
+            <input type="submit" class="bnn" value="确定">
+            </form>
+            <button class="bbb">取消</button>
+          </div>
         <div class="nav">
           <ul class="pagination">
-            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+              <li class="disabled">
+                  <a href="brands?pager=<%= pager-1<1? 1:pager-1 %>&pageSizer=<%= pageSizer%>" aria-label="Previous">
+                    <span aria-hidden="true">«</span>
+                  </a>
+                </li>
+                <% for(var i =0; i < totapager; i++){ %>
+                <li class="<%= pager===(i+1)? 'active':'' %>">
+                  <a href="brands?pager=<%= i+1%>&pageSizer=<%= pageSizer%>">
+                    <%= i+1 %><span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <% } %>
+                <li>
+                  <a href="brands?pager=<%= pager+1>totapager? totapager:pager+1 %>&pageSizer=<%= pageSizer%>" aria-label="Next">
+                    <span aria-hidden="true">»</span>
+                  </a>
+                </li>
           </ul>
         </div>
       </div>
@@ -80,3 +118,15 @@
   </div>
 </body>
 </html>
+<script src="js/jquery.js"></script>
+<script>
+  $('.but').click(function(){
+    $('.tab').css("display","block");
+  })
+  $('.bnn').click(function(){
+    $('.tab').css("display","none");
+  })
+  $('.bbb').click(function(){
+    $('.tab').css("display","none");
+  })
+</script>

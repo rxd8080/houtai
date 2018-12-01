@@ -5,7 +5,7 @@ var ObjectId = require('mongodb').ObjectId
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://127.0.0.1:27017'
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   var page = Number(req.query.page) || 1; //页码
   var pageSize = Number(req.query.pageSize) || 5 //每页数据的条数
   var totalSize = 0; //总条数
@@ -40,7 +40,7 @@ router.get('/', function (req, res, next) {
         })
       } 
     ],function (err,result){
-      console.log(result)
+      //console.log(result)
       if(err){
         res.render('error',{
           message:'错误',
@@ -57,8 +57,8 @@ router.get('/', function (req, res, next) {
     })
     /* db.collection('user').find().toArray(function (err, data) {
       if (err) {
-        console.log('查询用户数据失败', err);
-        res.render(error, {
+        console.log('查询用户数据失败', err)
+        res.render('error', {
           message: '查询失败',
           error: err
         })
@@ -234,7 +234,7 @@ router.get('/delete',function(req,res){
     var db = client.db('prot');
     db.collection('user').deleteOne({
       _id:ObjectId(id)
-    },function(err,data){
+    },function(err){
       //console.log(data)
       if(err){
         res.render('error',{
@@ -245,7 +245,63 @@ router.get('/delete',function(req,res){
         //删除成功
         res.redirect('/users')
       }
+      client.close();
     })
   })
 })
+
+//搜索功能
+router.post('/search',function(req,res){
+  var name = req.body.name;
+  var fliter = new RegExp(name);
+  var page = Number(req.query.page) || 1; //页码
+  var pageSize = Number(req.query.pageSize) || 5 //每页数据的条数
+  var totalSize = 0; //总条数
+  MongoClient.connect(url,{useNewUrlParser:true},function(err,client) {
+    if(err){
+      res.render('error',{
+        message:'连接失败',
+        error:err
+      })
+      return;
+    }
+    var db = client.db('prot');
+    db.collection('user').find({username:fliter}).toArray(function(err,data){
+      console.log(data)
+      if(err){
+        res.render('error',{
+          message:'错误',
+          error:err
+        })
+      }else if(data.length <= 0){
+        res.render('error',{
+          message:'该用户名不存在',
+          error:new Error('请输入正确的用户名')
+        })
+      }else if(!name){
+        res.render('error',{
+          message:'搜索内容不能为空',
+          error:new Error('输入有误,请重新输入')
+        })
+      }else{
+        res.render('users',{
+          data:data,
+          page:page,
+          totapage:Math.ceil(totalSize/pageSize),
+          pageSize:pageSize
+        });
+      }
+      client.close();
+    })
+  })
+}) 
+
+//手机管理
+
+
 module.exports = router;
+
+/* 
+
+
+*/

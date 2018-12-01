@@ -15,10 +15,11 @@
       <%- include('./common/maue.ejs')%>
       <div class="main-right">
         <h1>用户管理</h1>
-        <form class="right-f">
-          <input type="text" />
-          <button class="btn btn-primary">搜索</button>
-        </form>
+        <form class="right-f" action="/users/search" method="POST">
+          <input type="text" name="name"/>
+          <input type="submit" class="btn btn-primary" value="搜索">
+        <a href="http://localhost:3000/users" class="btn btn-primary">退出搜索</a>
+      </form>
         <table class="table table-bordered tablist">
           <thead>
             <tr>
